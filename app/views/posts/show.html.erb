@@ -1,0 +1,25 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @post %>
+
+<%= render 'comments/form' %>
+
+<br>
+
+
+<div>
+  <%= link_to "Edit this post", edit_post_path(@post) %> |
+  <%= link_to "Back to posts", posts_path %>
+
+  <%= button_to "Destroy this post", @post, method: :delete %>
+</div>
+
+
+  <% Post::Kinds.each do |kind| %>
+    <%= button_to "#{Post::KindsSpanish[kind]}", new_user_reaction_path(post_id: @post.id, reaction_type: "post", kind: kind), method: :post %>
+  <% end %>
+
+
+</div>
+
+<%= render 'comments/post_comments' %>
